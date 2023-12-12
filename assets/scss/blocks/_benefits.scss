@@ -1,0 +1,69 @@
+.benefits {
+    @include block-bg($background-color: $bg-smooth-white);
+
+    * {
+        color: $main-grafite;
+    }
+
+    h2 {
+        @include title();
+    }
+
+    &__content {
+        @include flex($j-content: space-between);
+    }
+
+    &__item {
+        @include flex($f-direction: column);
+        cursor: default;
+
+        &-icon {
+            @include flex();
+            padding: 10px;
+            background-color: $main-grafite;
+            border-radius: 50%;
+            margin-bottom: 15px;
+
+            img {
+                width: 50px;
+            }
+
+            .icon {
+                &-payment {
+                    padding: 4px;
+                }
+
+                &-fast-delivery {
+                    position: relative;
+                    top: -6px;
+                }
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        padding-top: 15px;
+        padding-bottom: 15px;
+
+        h2 {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        &__content {
+            flex-wrap: wrap;
+            column-gap: 10px;
+            row-gap: 15px;
+        }
+
+        &__item {
+            flex-basis: 48%;
+        }
+    }
+
+    @media (max-width: 475px) {
+        &__item {
+            flex-basis: 100%;
+        }
+    }
+}

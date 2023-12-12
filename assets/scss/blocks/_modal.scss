@@ -1,0 +1,98 @@
+.recall {
+    &__modal {
+        width: 100%;
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        left: 0;
+        z-index: 11;
+        overflow: auto;
+        background: rgba(255, 255, 255, 0.2);
+        backdrop-filter: blur(2px);
+
+        &-content {
+            position: relative;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
+            width: 350px;
+            display: flex;
+            flex-direction: column;
+            padding: 75px 30px 30px;
+            background-color: $main-grafite;
+            border-radius: 15px;
+            box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        }
+
+        &-header {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            @include flex($j-content: space-between);
+            padding: 10px 30px;
+            background-color: $main-gray;
+            border-top-right-radius: 15px;
+            border-top-left-radius: 15px;
+        }
+
+        &-close {
+            position: relative;
+            width: 24px;
+            height: 24px;
+            cursor: pointer;
+
+            @include cross-close();
+
+            &:hover {
+                &::before,
+                &::after {
+                    background-color: $main-grafite;
+                    transition: background-color 0.3s ease-in-out;
+                }
+            }
+        }
+    }
+
+    &__form {
+        &-field {
+            margin-bottom: 30px;
+            position: relative;
+        }
+
+        label {
+            @include modal-field-placeholder();
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 7px 5px;
+            border-radius: 5px;
+            border: none;
+            font-size: 14px;
+            color: $main-grafite;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        &-send {
+            cursor: pointer;
+
+            &:hover {
+                color: white;
+                background-color: $main-gray;
+                transition: background-color 0.3s ease-in-out;
+            }
+        }
+
+        .field_up {
+            top: -14px;
+            transition: all 0.3s ease;
+            color: white;
+        }
+    }
+}

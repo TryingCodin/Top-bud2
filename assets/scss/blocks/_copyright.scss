@@ -1,0 +1,13 @@
+.copyright {
+    @include block-bg(15px, 15px, $bg-smooth-white, $position: relative);
+    font-size: 14px;
+    color: $main-grafite;
+    text-align: center;
+
+    &.copyright_fixed {
+        position: fixed;
+        left: 0;
+        right: 0;
+        bottom: 0;
+    }
+}

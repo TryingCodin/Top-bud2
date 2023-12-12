@@ -1,0 +1,74 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/font';
+@import '../base/common';
+@import '../blocks/header';
+
+.returns-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: $main-grafite;
+    cursor: default;
+
+    .container {
+        @include flex($a-items: start, $f-direction: column);
+        row-gap: 15px;
+    }
+
+    h1 {
+        font-size: 16px;
+    }
+
+    &__title {
+        font-size: 22px;
+        font-weight: 500;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+    }
+
+    &__text-attention {
+        font-size: 16px;
+        color: $main-gray;
+        text-decoration: underline;
+        text-decoration-style: dashed;
+
+        a.dropdown-chevron {
+            padding: 4px 20px 4px 4px !important;
+            border-radius: 5px;
+            position: relative;
+
+            &::after {
+                background-image: url("../images/icons/icon__chevron-right--gray.svg");
+                right: initial;
+            }
+
+            &:hover {
+                color: white;
+                background-color: $main-gray;
+
+                &::after {
+                    background-image: url("../images/icons/icon__chevron-right.svg");
+                }
+            }
+        }
+    }
+
+    &__list li {
+        padding: 4px 4px 4px 20px;
+        position: relative;
+
+        @include bulleted-list();
+    }
+}
+
+@import '../blocks/footer';
+@import '../blocks/copyright';
+
+@media (max-width: 768px) {
+    .footer.footer_fixed,
+    .copyright.copyright_fixed {
+        position: initial;
+    }
+}
+@import '../blocks/modal';
+@import '../abstracts/animation';

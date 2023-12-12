@@ -1,0 +1,137 @@
+@mixin font-face($name, $src, $weight) {
+    @font-face {
+        font-family: $name;
+        src: url('../font/' + $src + '.ttf') format('truetype'),
+        url('../font/' + $src + '.woff') format('woff'),
+        url('../font/' + $src + '.woff2') format('woff2');
+        font-weight: $weight;
+        font-style: normal;
+        font-display: swap;
+    }
+}
+
+@mixin block-bg($padding-top: 30px, $padding-bottom: 30px, $background-color: null, $box-shadow: null, $position: null) {
+    padding-top: $padding-top;
+    padding-bottom: $padding-bottom;
+
+    @if $background-color != null {
+        background-color: $background-color;
+    }
+
+    @if $box-shadow == 'top' {
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5);
+    } @else if ($box-shadow == 'bottom') {
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    } @else if ($box-shadow == 'both-sides') {
+        box-shadow: 0 -4px 8px rgba(0, 0, 0, 0.5), 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    @if $position != null {
+        position: relative;
+    }
+}
+
+@mixin flex($a-items: center, $j-content: null, $f-direction: null, $column-gap: null) {
+    display: flex;
+    align-items: $a-items;
+
+    @if $j-content != null {
+        justify-content: $j-content;
+    }
+
+    @if $f-direction != null {
+        flex-direction: $f-direction;
+    }
+
+    @if $column-gap != null {
+        column-gap: $column-gap;
+    }
+}
+
+@mixin title() {
+    font-size: 32px;
+    margin-bottom: 30px;
+    cursor: default;
+}
+
+@mixin cross-close() {
+    &::before,
+    &::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        width: 16px;
+        height: 2px;
+        background-color: white;
+    }
+
+    &::before {
+        transform: translate(-50%, -50%) rotate(45deg);
+    }
+
+    &::after {
+        transform: translate(-50%, -50%) rotate(-45deg);
+    }
+}
+
+@mixin chevron--after($width: null, $height: null, $background-size: null, $top: null, $left: null, $right: null, $transform, $transition: null) {
+    &::after {
+        content: "";
+        width: $width;
+        height: $height;
+        background: url("../images/icons/icon__chevron-right.svg") no-repeat center;
+
+        @if $background-size != null {
+            background-size: $background-size;
+        }
+
+        position: absolute;
+        top: $top;
+        left: $left;
+        right: $right;
+        transform: $transform;
+
+        @if $transition != null {
+            transition: $transition;
+        }
+    }
+}
+
+@mixin bulleted-list() {
+    &::before {
+        content: "·";
+        display: block;
+        width: 20px;
+        height: 20px;
+        text-align: center;
+        position: absolute;
+        top: 50%;
+        left: 0;
+        transform: translateY(-50%);
+    }
+}
+
+@mixin modal-field-placeholder() {
+    position: absolute;
+    top: 50%;
+    left: 0;
+    transform: translateY(-50%);
+    width: 100%;
+    height: 100%;
+    padding-left: 5px;
+    padding-right: 5px;
+    display: flex;
+    align-items: center;
+    font-size: 14px;
+    color: $main-gray;
+    transition: all 0.3s ease;
+    cursor: pointer;
+
+    .obligatory-field::after {
+        content: "*";
+        position: absolute;
+        padding-left: 3px;
+        color: red;
+    }
+}

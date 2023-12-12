@@ -1,0 +1,93 @@
+.banner {
+    margin: 0 auto;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    position: relative;
+
+    &__swiper {
+        height: 30rem;
+        position: relative;
+        overflow-x: hidden;
+    }
+
+    .swiper {
+        &-slide {
+            @include flex($j-content: center, $f-direction: column);
+            padding: 20px 150px;
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-position: center center;
+            text-align: center;
+            cursor: default;
+            position: relative;
+
+            &__inner {
+                max-width: 1440px;
+            }
+
+            h2 {
+                margin-bottom: 30px;
+            }
+
+            h3 {
+                line-height: 30px;
+            }
+        }
+
+        &-button-prev,
+        &-button-next {
+            width: 30px;
+            height: 30px;
+            background-color: $main-grafite;
+            border-radius: 5px;
+            z-index: 8;
+
+            &::after {
+                font-size: 18px;
+                font-weight: 700;
+                color: $main-gray;
+            }
+
+            &:hover::after {
+                color: white;
+            }
+        }
+
+        &-button-prev {
+            top: 55%;
+            left: auto;
+            right: 10px;
+        }
+
+        &-button-next {
+            top: 50%;
+            transform: translateY(-50%);
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__swiper {
+            height: 30rem;
+        }
+
+        .swiper-slide {
+            padding-left: 10%;
+            padding-right: 10%;
+        }
+    }
+
+    @media (max-width: 567px) {
+        .swiper-slide {
+            padding-left: 45px;
+            padding-right: 45px;
+
+            h2 {
+                font-size: 18px;
+            }
+
+            h3 {
+                font-size: 16px;
+                line-height: 25px;
+            }
+        }
+    }
+}

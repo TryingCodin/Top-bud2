@@ -1,0 +1,58 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/font';
+@import '../base/common';
+@import '../blocks/header';
+
+.delivery-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: $main-grafite;
+    cursor: default;
+
+    &__block {
+        @include flex($a-items: start, $f-direction: column);
+        row-gap: 15px;
+
+        + div {
+            margin-top: 30px;
+        }
+    }
+
+    &__title {
+        font-size: 22px;
+        font-weight: 500;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+    }
+
+    &__text-attention {
+        font-size: 16px;
+        color: $main-gray;
+        text-decoration: underline;
+        text-decoration-style: dashed;
+    }
+
+    &__list li {
+        padding: 4px 4px 4px 20px;
+        position: relative;
+
+        @include bulleted-list();
+    }
+
+    .benefits__content {
+        width: 100%;
+        justify-content: space-around;
+
+        .icon-cashless {
+            position: relative;
+            left: -4px;
+        }
+    }
+}
+
+@import '../blocks/benefits';
+@import '../blocks/footer';
+@import '../blocks/copyright';
+@import '../blocks/modal';
+@import '../abstracts/animation';

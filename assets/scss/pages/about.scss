@@ -1,0 +1,96 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/font';
+@import '../base/common';
+@import '../blocks/header';
+
+.about-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: $main-grafite;
+    cursor: default;
+
+    h2 {
+        font-size: 22px;
+        text-decoration: underline;
+        text-decoration-style: dotted;
+        margin-bottom: 15px;
+    }
+
+    &__grid {
+        @include flex($j-content: space-between);
+        flex-wrap: wrap;
+        row-gap: 50px;
+    }
+
+    &__item {
+        flex-basis: 45%;
+        display: flex;
+        align-items: center;
+        column-gap: 30px;
+    }
+
+    &__icon {
+        flex-shrink: 0;
+        width: 80px;
+        height: 80px;
+        @include flex($j-content: center);
+        background-color: $main-grafite;
+        border-radius: 50%;
+
+        img {
+            width: 65px;
+        }
+
+        .icon {
+            &__individuality {
+                width: 75px;
+                height: 75px;
+                position: relative;
+                top: 6px;
+            }
+
+            &__special-customer {
+                width: 70px;
+                height: 70px;
+                position: relative;
+                top: 8px;
+                left: 2px;
+            }
+        }
+    }
+
+    @media (max-width: 768px) {
+        &__grid {
+            align-items: start;
+            flex-direction: column;
+            row-gap: 30px;
+        }
+
+        &__item {
+            width: 100%;
+            column-gap: 15px;
+        }
+    }
+
+    @media (max-width: 567px) {
+        &__item {
+            flex-direction: column;
+            text-align: center;
+            row-gap: 15px;
+        }
+    }
+}
+
+@import '../blocks/footer';
+@import '../blocks/copyright';
+
+@media (max-width: 768px) {
+    .footer.footer_fixed,
+    .copyright.copyright_fixed {
+        position: initial;
+    }
+}
+
+@import '../blocks/modal';
+@import '../abstracts/animation';

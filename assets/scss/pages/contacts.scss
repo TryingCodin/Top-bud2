@@ -1,0 +1,134 @@
+@import '../abstracts/variables';
+@import '../abstracts/mixins';
+@import '../base/font';
+@import '../base/common';
+@import '../blocks/header';
+
+.contacts-content {
+    padding-top: 30px;
+    padding-bottom: 30px;
+    color: $main-grafite;
+
+    .container {
+        @include flex(start, space-between);
+        column-gap: 20px;
+    }
+
+    &__info {
+        flex-basis: 50%;
+
+        div {
+            + div {
+                margin-top: 30px;
+            }
+
+            span {
+                &:first-child {
+                    cursor: default;
+                }
+
+                &:nth-child(2) {
+                    margin-left: 3px;
+                    color: $main-gray;
+                }
+            }
+        }
+    }
+
+    &__map {
+        flex-basis: 50%;
+        height: 600px;
+        border: 0;
+    }
+
+    &__form {
+        width: 50%;
+        margin-top: 30px;
+
+        &--title {
+            //margin-bottom: 15px;
+        }
+
+        &--field {
+            margin-top: 30px;
+            position: relative;
+        }
+
+        label {
+            @include modal-field-placeholder();
+        }
+
+        input,
+        textarea {
+            width: 100%;
+            padding: 7px 5px;
+            border-radius: 5px;
+            border: 1px solid $main-grafite;
+            font-size: 14px;
+            color: $main-grafite;
+            outline: none;
+        }
+
+        textarea {
+            resize: none;
+        }
+
+        &--send {
+            margin-top: 30px;
+            background-color: white;
+            color: $main-gray;
+            cursor: pointer;
+
+            &:hover {
+                color: white;
+                background-color: $main-gray;
+                transition: background-color 0.3s ease-in-out;
+            }
+        }
+
+        .field_up {
+            top: -14px;
+            transition: all 0.3s ease;
+        }
+    }
+
+    @media (max-width: 992px) {
+        &__form {
+            width: 100%;
+        }
+    }
+
+    @media (max-width: 768px) {
+        .container {
+            flex-direction: column;
+        }
+
+        &__info {
+            width: 100%;
+            margin-top: 15px;
+
+            > div + div {
+                margin-top: 15px;
+            }
+        }
+
+        &__form {
+            width: 100%;
+            margin-top: 15px;
+
+            &--field {
+                margin-top: 25px;
+            }
+        }
+
+        &__map {
+            order: -1;
+            width: 100%;
+        }
+    }
+}
+
+@import '../blocks/footer';
+@import '../blocks/copyright';
+@import '../blocks/modal';
+@import '../abstracts/animation';

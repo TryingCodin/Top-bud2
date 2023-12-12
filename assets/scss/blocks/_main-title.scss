@@ -1,0 +1,28 @@
+.main-title {
+    background-color: $bg-smooth-white;
+
+    .container {
+        padding-top: 10rem;
+        padding-bottom: 10rem;
+        text-align: center;
+    }
+
+    h1 {
+        font-size: 28px;
+        color: $main-grafite;
+    }
+
+    @media (max-width: 992px) {
+        .container {
+            padding-top: 3rem;
+            padding-bottom: 3rem;
+            text-align: center;
+        }
+    }
+
+    @media (max-width: 567px) {
+        h1 {
+            font-size: 24px;
+        }
+    }
+}

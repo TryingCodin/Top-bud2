@@ -1,0 +1,6 @@
+#Ignore IDE files
+/.idea/
+
+#Ignore «Gulp» files
+/gulp-dir/node_modules/
+/gulp-dir/package-lock.json

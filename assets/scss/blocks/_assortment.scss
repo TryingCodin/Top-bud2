@@ -1,0 +1,204 @@
+.assortment {
+    @include block-bg($background-color: $main-grafite, $box-shadow: 'both-sides', $position: relative);
+    padding-left: 10px;
+    padding-right: 10px;
+
+    .container {
+        max-width: 1420px;
+        padding: 30px 28px 20px;
+        background-color: white;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+    }
+
+    &__title {
+        @include title();
+        color: $main-grafite;
+    }
+
+    &__grid {
+        display: flex;
+        flex-wrap: wrap;
+        margin: 0 -8px 40px;
+
+        * {
+            color: $main-grafite;
+        }
+
+        &-column {
+            width: 33.33333%;
+            padding: 0 8px;
+            height: auto;
+        }
+
+        &-items {
+            @include flex($j-content: space-between, $f-direction: column);
+            row-gap: 16px;
+        }
+    }
+
+    &__item {
+        width: 100%;
+        height: 100%;
+        padding: 24px;
+        border: 1px solid $main-gray;
+        border-radius: 4px;
+        box-shadow: 0 4px 8px rgba(0, 0, 0, 0.5);
+        transition: background-color 250ms ease-in-out;
+
+        &:hover {
+            background-color: $main-grafite;
+
+            * {
+                color: white;
+            }
+        }
+
+        &-title {
+            display: flex;
+            align-items: center;
+            column-gap: 10px;
+            margin-bottom: 15px;
+
+            img {
+                width: 30px;
+            }
+        }
+
+        h3 {
+            cursor: default;
+        }
+
+        > ul > li {
+            &:hover .assortment__item--dropdown-list {
+                max-height: 300px;
+                transition: max-height 1s ease-in;
+            }
+
+            .assortment__item--dropdown-list {
+                padding-left: 20px;
+                max-height: 0;
+                transition: max-height 0.7s ease-out;
+                overflow: hidden;
+            }
+        }
+
+        a {
+            display: block;
+            width: 100%;
+            padding: 8px 8px 8px 20px;
+            border-radius: 5px;
+            position: relative;
+
+            &:hover {
+                background-color: $main-gray;
+                transition: 250ms ease-in-out;
+            }
+
+            @include bulleted-list();
+        }
+
+        &--dropdown {
+            position: relative;
+
+            &-btn {
+                display: none;
+                width: 30px;
+                height: 30px;
+                background-color: $main-gray;
+                border: 1px solid $main-gray;
+                border-radius: 5px;
+                position: absolute;
+                top: 1.5px;
+                right: 5px;
+                z-index: 9;
+
+                @include chevron--after(30px, 30px, cover, 50%, 0, $transform: translateY(-50%), $transition: transform 1s);
+            }
+
+            .btn_back::after {
+                top: -1px;
+                left: -1px;
+                transform: rotate(-180deg);
+                transition: transform 1s;
+            }
+        }
+    }
+
+    @media (max-width: 1024px) {
+        .dropdown-chevron::after {
+            content: none;
+        }
+
+        &__item--dropdown-btn {
+            display: block;
+        }
+    }
+
+    @media (max-width: 992px) {
+        &__grid {
+            row-gap: 16px;
+
+            div {
+                &:nth-child(1),
+                &:nth-child(2) {
+                    flex-basis: 50%;
+                }
+            }
+
+            &-items {
+                flex-direction: row;
+                column-gap: 16px;
+                width: 100%;
+            }
+        }
+    }
+
+    @media (max-width: 640px) {
+        .container {
+            padding: 15px 10px 10px;
+        }
+
+        &__title {
+            font-size: 24px;
+            margin-bottom: 15px;
+        }
+
+        &__grid {
+            margin-bottom: 20px;
+
+            div {
+                &:nth-child(1),
+                &:nth-child(2) {
+                    flex-basis: 100%;
+                }
+            }
+
+            &-items {
+                flex-direction: column;
+                column-gap: initial;
+            }
+        }
+
+        &__item {
+            .dropdown-chevron {
+                padding-right: 40px !important;
+            }
+
+            > ul > li {
+                &:hover .assortment__item--dropdown-list {
+                    max-height: initial;
+                    transition: max-height 1s ease-in-out;
+                }
+
+                .assortment__item--dropdown-list {
+                    max-height: 0 !important;
+                }
+
+                .list_open {
+                    max-height: 300px !important;
+                }
+            }
+        }
+    }
+}
